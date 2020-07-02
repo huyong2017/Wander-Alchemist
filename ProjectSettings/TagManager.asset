@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
+  - UIThings
   layers:
   - Default
   - TransparentFX
@@ -50,12 +52,12 @@ TagManager:
   - name: ColiderGround
     uniqueID: 281079719
     locked: 0
-  - name: InnerGround
-    uniqueID: 1851163255
-    locked: 0
-  - name: CloseGround
-    uniqueID: 3963638407
-    locked: 0
   - name: Player
     uniqueID: 3223118725
+    locked: 0
+  - name: InnerGround
+    uniqueID: 3167434553
+    locked: 0
+  - name: CloseGround
+    uniqueID: 932078709
     locked: 0

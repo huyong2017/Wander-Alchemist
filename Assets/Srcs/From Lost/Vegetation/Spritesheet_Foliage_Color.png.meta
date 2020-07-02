@@ -147,7 +147,7 @@ TextureImporter:
       name: spritesheet_vegetation_1
       rect:
         serializedVersion: 2
-        x: 1596
+        x: 1602
         y: 2931
         width: 1324
         height: 1099
@@ -233,7 +233,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1558
         y: 2099
-        width: 982
+        width: 981
         height: 647
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -255,7 +255,7 @@ TextureImporter:
         x: 2706
         y: 2108
         width: 1331
-        height: 650
+        height: 649
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

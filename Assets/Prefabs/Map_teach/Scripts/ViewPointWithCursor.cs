@@ -20,8 +20,8 @@ public class ViewPointWithCursor : MonoBehaviour
     {
         float deltaX = Input.mousePosition.x - this.transform.position.x - (0.5f * Screen.width);
         float deltaY = Input.mousePosition.y - this.transform.position.y - (0.5f * Screen.height);
-        Vector3 bias = new Vector3(CameraBias * deltaX, CameraBias % deltaY, 0);
+        Vector3 bias = new Vector3(CameraBias * deltaX, CameraBias * deltaY, 0);
 
-        Debug.Log(this.GetComponent<CinemachineVirtualCamera>().Description);
+        this.GetComponent<CinemachineCameraOffset>().m_Offset = bias;
     }
 }

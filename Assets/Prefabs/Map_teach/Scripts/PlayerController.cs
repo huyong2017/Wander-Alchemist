@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-    private float bornPosX;//出生点的X坐标，用来平移环境图
+    private Vector3[] bornPos = new Vector3[7];//出生时候背景的坐标，用来平移环境图
+    public GameObject Camera;
+    private float initPos;//摄像机的初始x位置
 
     public Transform groundCheck;
     public LayerMask ground;
@@ -23,11 +25,18 @@ public class PlayerController : MonoBehaviour
     bool jumpPressed;
     int jumpCount;
 
+    //背景层次
+    public Transform[] EnvirLayer;
+
     void Start()
     {
         instance = this;
 
-        bornPosX = this.transform.position.x;
+        for (int i = 0; i < EnvirLayer.Length; i++)
+        {
+            bornPos[i] = EnvirLayer[i].position;
+        }
+        initPos = Camera.transform.position.x;
 
         clid = GetComponent<Collider2D>();
     }
@@ -89,9 +98,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 按照背景的不同层次增添一个水平偏移,共7个层次
+    // 01-大背景，随主角移动 其次的一次减少偏移量，最后一层要反向偏移，0506不偏倚
+    // 02-远山，03-云层与天空建筑，04-近处的偏移物，05-路左边的物体，06-路右边和路上的物体 07-近景的遮挡物
+    float[] biasLength = new float[7] { 0.9f, 0.85f, 0.75f, 0.2f, 0, 0, -0.2f };
     private void EnvironmentBias()
     {
-
+        float biasCamera = Camera.transform.position.x - initPos;
+        //Debug.Log(bornPosX[0] + biasCamera);
+        for (int i = 0; i < EnvirLayer.Length; i++)
+        {
+            EnvirLayer[i].transform.position = new Vector3((bornPos[i].x + biasCamera) * biasLength[i], bornPos[i].y, bornPos[i].z);
+        }
+        
     }
 
     

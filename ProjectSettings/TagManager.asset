@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
+  - UIThings
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 649216983
+    locked: 0
+  - name: MiddleGround
+    uniqueID: 939591717
+    locked: 0
+  - name: ColiderGround
+    uniqueID: 281079719
+    locked: 0
+  - name: Player
+    uniqueID: 3223118725
+    locked: 0
+  - name: InnerGround
+    uniqueID: 3167434553
+    locked: 0
+  - name: CloseGround
+    uniqueID: 932078709
     locked: 0

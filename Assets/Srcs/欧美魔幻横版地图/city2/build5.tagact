@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+	<key>version</key>
+	<string>V1.0.0</string>
+	<key>ActionArray</key>
+	<array>
+		<string>res/map/city2/build5.png,0,0,0,1.00,0,0.00,1.00,1,0,1.00,0,0,2</string>
+		<string>res/map/city2/21.png,0,-20,-163,1.00,0,0.00,1.00,1,0,1.00,0,0,2</string>
+		<string>scene/word/16.png,0,-20,-160,1.00,0,0.00,1.00,1,0,1.00,0,0,2</string>
+		<string>res/map/city2/magictown.plist,1,-25,140,1.00,0,0.00,1.00,1,0,1.00,0,0,2</string>
+	</array>
+</dict>
+</plist>

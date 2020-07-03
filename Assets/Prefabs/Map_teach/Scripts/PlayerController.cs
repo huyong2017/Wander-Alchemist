@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     // 按照背景的不同层次增添一个水平偏移,共7个层次
     // 01-大背景，随主角移动 其次的一次减少偏移量，最后一层要反向偏移，0506不偏倚
     // 02-远山，03-云层与天空建筑，04-近处的偏移物，05-路左边的物体，06-路右边和路上的物体 07-近景的遮挡物
-    float[] biasLength = new float[7] { 0.9f, 0.85f, 0.55f, 0.2f, 0, 0, -0.2f };
+    float[] biasLength = new float[7] { 0.9f, 0.65f, 0.45f, 0.2f, 0, 0, -0.2f };
     private void EnvironmentBias()
     {
         float biasCamera = Camera.transform.position.x - initPos;

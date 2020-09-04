@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-    private Vector3[] bornPos = new Vector3[7];//出生时候背景的坐标，用来平移环境图
+    private Vector3[] bornPos = new Vector3[8];//出生时候背景的坐标，用来平移环境图
     public GameObject Camera;
     private float initPos;//摄像机的初始x位置
 

@@ -229,6 +229,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_Friction: 0
+  m_FrictionDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_Radius: 0
   m_RadiusDistrib:
     serializedVersion: 2
@@ -284,6 +291,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_Inert: 0.5
   m_InertDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Friction: 0
+  m_FrictionDistrib:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
@@ -353,6 +367,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_Inert: 0.5
   m_InertDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Friction: 0
+  m_FrictionDistrib:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2

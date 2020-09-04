@@ -30,5 +30,8 @@ public class ViewPointWithCursor : MonoBehaviour
             Debug.Log(dis);
         }*/
         this.GetComponent<CinemachineCameraOffset>().m_Offset = bias;
+
+        //通过鼠标滚轮调整视野大小
+        
     }
 }

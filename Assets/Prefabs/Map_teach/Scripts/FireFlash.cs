@@ -14,8 +14,7 @@ public class FireFlash : MonoBehaviour
     float weight;
     void Update()
     {
-        weight =  0.5f * Mathf.Sin(10 * Time.time) + 1;
+        weight =  0.2f * Mathf.Sin(10 * Time.time) + 1;
         mlight.intensity = weight;
-        this.transform.Translate(new Vector3(0.05f * Mathf.Sin(Time.time),0,0));
     }
 }

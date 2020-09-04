@@ -61,6 +61,10 @@ ScriptedImporter:
     maxTextureSizeSet: 0
     compressionQualitySet: 0
     textureFormatSet: 0
+<<<<<<< HEAD
+=======
+    applyGammaDecoding: 0
+>>>>>>> Branch-Lin
   spriteImportData:
   - name: 
     originalName: 

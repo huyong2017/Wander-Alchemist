@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 11a4f76228f949346a2fa6801dd1ef01
 folderAsset: yes
 DefaultImporter:
@@ -6,3 +7,6 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+guid: d6ef58fc6f637406bbe6814a19c377f8
+>>>>>>> Branch-Lin

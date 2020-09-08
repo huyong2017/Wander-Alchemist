@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -13438,7 +13438,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -20.678429, y: -6.4614162, z: 0}
+    - position: {x: -21.007914, y: -12.640897, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -13519,6 +13519,33 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+    - position: {x: 45.8415, y: -8.957227, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+    - position: {x: 44.989487, y: -14.131492, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+    - position: {x: 21.190012, y: -13.490865, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
   m_SpriteShape: {fileID: 11400000, guid: 18082d4b1dde54612b6ce63fd49c9014, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
@@ -13580,8 +13607,8 @@ SpriteShapeRenderer:
   - {fileID: 1887494081247492234, guid: d501f6d7fa84c4038b7449696f44ff38, type: 3}
   - {fileID: -4069628985407814602, guid: a4fef30bb3ca5463a9c33c123a81604a, type: 3}
   m_LocalAABB:
-    m_Center: {x: 13.62355, y: -2.3294106, z: -0.0004}
-    m_Extent: {x: 35.269684, y: 5.4048986, z: 0.0004}
+    m_Center: {x: 13.625322, y: -5.8326015, z: -0.00055}
+    m_Extent: {x: 35.267914, y: 8.908091, z: 0.00055}
 --- !u!4 &1167739034
 Transform:
   m_ObjectHideFlags: 0
@@ -13612,8 +13639,8 @@ EdgeCollider2D:
   m_Offset: {x: 0.22, y: 0.33}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -20.679577, y: -6.4626045}
-  - {x: -21.03398, y: 2.4812229}
+  - {x: -21.009111, y: -12.642073}
+  - {x: -21.03395, y: 2.481222}
   - {x: -15.895859, y: 2.3909297}
   - {x: -10.159829, y: 2.2840235}
   - {x: -5.6223865, y: 2.1949222}
@@ -13638,9 +13665,13 @@ EdgeCollider2D:
   - {x: 47.35606, y: -4.4437594}
   - {x: 47.75927, y: -5.538793}
   - {x: 47.06746, y: -6.230811}
-  - {x: 46.69474, y: -7.132069}
-  - {x: -20.678434, y: -6.462616}
-  - {x: -20.679577, y: -6.4626045}
+  - {x: 46.695564, y: -7.1300735}
+  - {x: 45.842693, y: -8.957388}
+  - {x: 44.990513, y: -14.13272}
+  - {x: 20.840107, y: -13.482647}
+  - {x: 18.552616, y: -13.438943}
+  - {x: -21.007938, y: -12.6420965}
+  - {x: -21.009111, y: -12.642073}
 --- !u!1 &1171767632
 GameObject:
   m_ObjectHideFlags: 0
@@ -16973,6 +17004,15 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+    - position: {x: 0.8312149, y: -11.1227665, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
   m_SpriteShape: {fileID: 11400000, guid: 18082d4b1dde54612b6ce63fd49c9014, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
@@ -17034,8 +17074,8 @@ SpriteShapeRenderer:
   - {fileID: 1887494081247492234, guid: d501f6d7fa84c4038b7449696f44ff38, type: 3}
   - {fileID: -4069628985407814602, guid: a4fef30bb3ca5463a9c33c123a81604a, type: 3}
   m_LocalAABB:
-    m_Center: {x: 43.959694, y: 0.1606865, z: -0.00049999997}
-    m_Extent: {x: 49.007866, y: 6.0208263, z: 0.00049999997}
+    m_Center: {x: 43.959694, y: -2.7812815, z: -0.00055}
+    m_Extent: {x: 49.007866, y: 8.962795, z: 0.00055}
 --- !u!68 &1426008939
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -17052,7 +17092,7 @@ EdgeCollider2D:
   m_Offset: {x: -0.32, y: 0.45}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.22512956, y: -5.298533}
+  - {x: -0.5101216, y: -5.094561}
   - {x: -2.114531, y: -3.9462686}
   - {x: -2.9216511, y: -3.138929}
   - {x: -2.6911192, y: -1.9859574}
@@ -17093,9 +17133,9 @@ EdgeCollider2D:
   - {x: 82.042656, y: 5.080512}
   - {x: 89.66558, y: 5.017196}
   - {x: 92.345665, y: 4.9962115}
-  - {x: 91.62076, y: -5.260714}
-  - {x: -0.5090506, y: -5.0950594}
-  - {x: -0.5094264, y: -5.095059}
+  - {x: 91.620766, y: -5.2606406}
+  - {x: 0.830271, y: -11.124031}
+  - {x: -0.5101216, y: -5.094561}
 --- !u!1 &1432808534
 GameObject:
   m_ObjectHideFlags: 0

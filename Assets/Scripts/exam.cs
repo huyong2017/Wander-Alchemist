@@ -11,33 +11,32 @@ public class exam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Light = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         Fire = false;
-        Light = false;
-        if (Input.GetKey(KeyCode.F)){
-            Fire = true;
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            Light = true;
-        }
-        if (Input.GetKey(KeyCode.O))
-        {
-            Oxygen = true;
-        }
-        UIManager.instance.useFire(Fire);
-        UIManager.instance.useLight(Light);
-        UIManager.instance.useOxygen(Oxygen);
+        Oxygen = false;
         if (Input.GetKeyDown(KeyCode.G))
         {
             pack += 1;
             UIManager.instance.ChangePack(pack);
         }
-        
+        if (Input.GetKey(KeyCode.F)){
+            Fire = true;
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            Oxygen = true;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Light = !Light;
+        }
+        UIManager.instance.useFire(Fire);
+        UIManager.instance.useLight(Light);
+        UIManager.instance.useOxygen(Oxygen);
     }
 }

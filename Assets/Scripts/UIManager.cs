@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject FillAmount_light;
     public GameObject FillAmount_oxygen;
     public GameObject Img;
+    public GameObject OutLight;
     public Image[] Image;
     private Image imgFillAmount_fire;
     private Image imgFillAmount_light;
@@ -25,6 +26,7 @@ public class UIManager : MonoBehaviour
         imgFillAmount_fire = FillAmount_fire.GetComponent<Image>();
         imgFillAmount_light = FillAmount_light.GetComponent<Image>();
         imgFillAmount_oxygen = FillAmount_oxygen.GetComponent<Image>();
+        OutLight.SetActive(false);
     }
 
 
@@ -35,9 +37,9 @@ public class UIManager : MonoBehaviour
         {
             if (imgFillAmount_fire.fillAmount > 0f)
             {
-                time += Time.deltaTime;
                 Prefabs.GetComponent<ParticleSystem>().Play();
-                imgFillAmount_fire.fillAmount = imgFillAmount_fire.fillAmount - time / 5;
+                time += Time.deltaTime;
+                imgFillAmount_fire.fillAmount  -= time / 5;
             }
             if (imgFillAmount_fire.fillAmount <= 0f)
             {
@@ -51,20 +53,26 @@ public class UIManager : MonoBehaviour
             Prefabs.GetComponent<ParticleSystem>().Stop();
         }
     }
-    public void useLight(bool Light)//发射光
+    public void useLight(bool Light)//打开光源
     { 
         if (Light)
         {
+            OutLight.SetActive(true);
             if (imgFillAmount_light.fillAmount > 0f)
             {
                 time += Time.deltaTime;
-                imgFillAmount_light.fillAmount = imgFillAmount_light.fillAmount - time / 5;
+                imgFillAmount_light.fillAmount -= time / 10;
             }
             if(imgFillAmount_light.fillAmount <= 0f)
             {
                 imgFillAmount_light.fillAmount = 0f;
+                OutLight.SetActive(false);
             }
             time = 0;
+        }
+        if (!Light)
+        {
+            OutLight.SetActive(false);
         }
     }
     public void useOxygen(bool Oxygen)//释放氧气
@@ -74,6 +82,7 @@ public class UIManager : MonoBehaviour
             if (imgFillAmount_oxygen.fillAmount > 0f)
             {
                 time += Time.deltaTime;
+                imgFillAmount_oxygen.fillAmount -= time / 5;
             }
             if (imgFillAmount_oxygen.fillAmount <= 0f)
             {

@@ -24,7 +24,8 @@ public class exam : MonoBehaviour
             pack += 1;
             UIManager.instance.ChangePack(pack);
         }
-        if (Input.GetKey(KeyCode.F)){
+        if (Input.GetKey(KeyCode.F))
+        {
             Fire = true;
         }
         if (Input.GetKey(KeyCode.O))
@@ -34,6 +35,10 @@ public class exam : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             Light = !Light;
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UIManager.instance.addPower(0, 0.3f);
         }
         UIManager.instance.useFire(Fire);
         UIManager.instance.useLight(Light);

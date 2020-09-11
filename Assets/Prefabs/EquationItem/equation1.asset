@@ -18,9 +18,14 @@ MonoBehaviour:
   goods:
   - {fileID: 11400000, guid: 8a1e08fab3662f346a2c17c385d71e08, type: 2}
   - {fileID: 11400000, guid: e87e47c8bf9f1fd4eb574ddab192d163, type: 2}
-  product: []
-  goodsnum: 
-  productnum: 
-  FirstEnergy: 0
-  SecondEnergy: 0
-  itemInfo: 
+  product:
+  - {fileID: 11400000, guid: 19e47299e375e4647acc7b627104b358, type: 2}
+  goodsnum: 0100000001000000
+  productnum: 01000000
+  FirstEnergy: 1
+  SecondEnergy: 2
+  FirstEnergyItem: {fileID: 0}
+  SecondEnergyItem: {fileID: 0}
+  Energy: 0100000002000000
+  productid: 03000000
+  itemInfo: "\u78B3\u548C\u6C27\u6C14\u7684\u53CD\u5E94\uFF0C\u4E3B\u8981\u751F\u6210\u70ED\uFF0C\u7136\u540E\u4EA7\u751F\u5149\u3002"

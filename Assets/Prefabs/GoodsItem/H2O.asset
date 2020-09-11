@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2b30b64a4e99e649ba6b954525f17da, type: 3}
-  m_Name: Oxygen
+  m_Name: H2O
   m_EditorClassIdentifier: 
-  itemName: "\u6C27\u6C14"
+  itemName: 
   itemImage: {fileID: 0}
   itemHeld: 0
-  Itemid: 2
-  itemInfo: "\u8FD9\u662F\u6C27\u6C14"
+  Itemid: 6
+  itemInfo: "\u8FD9\u662F\u6C34"

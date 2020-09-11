@@ -12,6 +12,9 @@ public class BagManager : MonoBehaviour
     public Bag myBag;
     public GameObject GBag;
     public GComponent mainUI;
+    private GComponent Bag;
+    private GList goodsItemList;
+    private GTextField GoodsInfo;
 
 
 
@@ -39,7 +42,9 @@ public class BagManager : MonoBehaviour
 
     void Start()
     {
-        
+        Bag = GetComponent<UIPanel>().ui;
+        goodsItemList = Bag.GetChild("GoodsItemList").asList;
+        GoodsInfo = Bag.GetChild("Information").asTextField;
     }
 
     public void Reaction(EquationItem item)
@@ -49,10 +54,33 @@ public class BagManager : MonoBehaviour
         List<GoodsItem> products = item.product;
         List<int> goodsnum = item.goodsnum;
         List<int> productnum = item.productnum;
+        if (checkGoods(goods, goodsnum))
+        {
+            for (int i = 0; i < goods.Count; i++)
+            {
+                goods[i].itemHeld -= goodsnum[i];
+                if (goods[i].itemHeld==0)
+                {
+                    myBag.itemList.Remove(goods[i]);
+                }
+            }
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (myBag.itemList.Contains(products[i]))
+                {
+                    products[i].itemHeld += productnum[i];
+                }
+                else
+                {
+                    myBag.itemList.Add(products[i]);
+                    products[i].itemHeld = productnum[i];
+                }
+            }
+        } 
         Debug.Log(Energy[0] + Energy[1]);
     }
 
-    public Boolean checkGoods(List<GoodsItem> goods, List<int> goodsnum)
+    public bool checkGoods(List<GoodsItem> goods, List<int> goodsnum)
     {
         for (int i = 0; i < goods.Count; i++)
         {
@@ -63,6 +91,31 @@ public class BagManager : MonoBehaviour
         }
         return true;
     }
+
+    public void UpdateBag()
+    {
+        goodsItemList.RemoveChildrenToPool();
+
+        foreach (var item in myBag.itemList)
+        {
+            if (item != null)
+            {
+                GButton gButton = goodsItemList.AddItemFromPool().asButton;
+                gButton.GetChild("number").asTextField.text = item.itemHeld.ToString();
+                gButton.GetChild("icon").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "Goods" + item.Itemid);
+                gButton.GetChild("id").asTextField.text = item.Itemid.ToString();
+                gButton.GetChild("title").asTextField.text = item.itemInfo;
+                gButton.onClick.Add(() => { ClickItem(gButton); });
+            }
+        }
+    }
+
+    private void ClickItem(GButton button)
+    {
+        Debug.Log(button.GetChild("title").asTextField.text);
+        GoodsInfo.text = button.GetChild("title").asTextField.text;
+    }
+
     // Update is called once per frame
     void Update()
     {

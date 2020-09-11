@@ -18,19 +18,13 @@ public class MyBag : MonoBehaviour
     private GTextField GoodsInfo;
     private GProgressBar ActProgress;
     private float ActTime;
-    private Boolean isAct;
+    private bool isAct;
     private EquationItem reactItem;
 
     void Start()
     {
         
 
-        //for (int i = 0; i < goodsItemList.numItems - 10; i++)
-        //{
-        //    GButton button = goodsItemList.GetChildAt(i).asButton;
-
-        //    button.onClick.Add(()=> { ClickItem(button); });
-        //}
     }
 
     private void Awake()
@@ -46,20 +40,6 @@ public class MyBag : MonoBehaviour
         equationItemList = Bag.GetChild("equationItemList").asList;
         BagInitiate();
     }
-    //private void RenderListItem(int index,GObject obj)
-    //{
-    //    GButton button = obj.asButton;
-    //    for (int i = 0; i < myBag.itemList.Count; i++)
-    //    {
-    //        if (myBag.itemList[i]!=null)
-    //        {
-    //            button.icon = myBag.itemList[i].itemImage;
-    //            button.
-    //            button.id = myBag.itemList[i].Itemid;
-    //            button.title = index.ToString();
-    //        }
-    //    }  
-    //}
 
     private void BagInitiate()
     {
@@ -77,11 +57,11 @@ public class MyBag : MonoBehaviour
                 gButton.GetChild("title").asTextField.text = item.itemInfo;
                 gButton.onClick.Add(() => { ClickItem(gButton); });
             }
-            else
-            {
-                GButton gButton = goodsItemList.AddItemFromPool().asButton;
-                gButton.GetChild("number").asTextField.text = "";
-            }
+        }
+        for (int i = 0; i < 30-myBag.itemList.Count; i++)
+        {
+            GButton gButton = goodsItemList.AddItemFromPool().asButton;
+            gButton.GetChild("number").asTextField.text = "";
         }
 
         foreach (var item in myBag.equationList)
@@ -140,11 +120,12 @@ public class MyBag : MonoBehaviour
                 break;
             }
         }
-        isAct = true;
+        if (BagManager.instance.checkGoods(reactItem.goods,reactItem.goodsnum))
+        {
+            isAct = true;
+        }
+        
         Debug.Log("11");
-        //float actTime = 0;
-        //actTime
-        //gComponent.
     }
 
     private void EquationActEnd(string id)
@@ -152,23 +133,6 @@ public class MyBag : MonoBehaviour
         ActProgress.TweenValue(0, 0.5f);
         isAct = false;
         Debug.Log("11");
-        //float actTime = 0;
-        //actTime
-        //gComponent.
-    }
-
-    IEnumerator Act()
-    {
-        for (int i = 1; i <= 100; i++)
-        {
-            ActProgress.value = i;
-            if (ActProgress.value == 100)
-            {
-                BagManager.instance.Reaction(1);
-                ActProgress.value = 0;
-            }
-            yield return new WaitForSeconds(500);
-        }    
     }
   
     // Update is called once per frame

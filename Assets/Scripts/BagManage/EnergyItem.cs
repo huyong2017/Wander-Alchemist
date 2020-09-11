@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class EnergyItem : ScriptableObject
 {
-    string name;
-    int num;
-    int id;
+    public string name;
+    public int num;
+    public int id;
     // Start is called before the first frame update
 }

@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b30b64a4e99e649ba6b954525f17da, type: 3}
-  m_Name: Oxygen
+  m_Script: {fileID: 11500000, guid: ccb16bcd578a43748ae7113f349fb962, type: 3}
+  m_Name: Energy3
   m_EditorClassIdentifier: 
-  itemName: "\u6C27\u6C14"
-  itemImage: {fileID: 0}
-  itemHeld: 86
-  Itemid: 2
-  itemInfo: "\u8FD9\u662F\u6C27\u6C14"
+  name: "\u6C27\u6C14"
+  num: 0
+  id: 3

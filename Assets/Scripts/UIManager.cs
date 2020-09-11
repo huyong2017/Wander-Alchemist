@@ -143,6 +143,26 @@ public class UIManager : MonoBehaviour
             imgFillAmount_oxygen.fillAmount += t;
         }
     }
+
+    public void setPower(int i,float t)
+    {
+        if (i == 0)
+        {
+            imgFillAmount_fire.fillAmount = t;
+        }
+        if (i == 1)
+        {
+            imgFillAmount_frost.fillAmount = t;
+        }
+        if (i == 2)
+        {
+            imgFillAmount_light.fillAmount = t;
+        }
+        if (i == 3)
+        {
+            imgFillAmount_oxygen.fillAmount = t;
+        }
+    }
     public void CollisionDetection(bool collision)
     {
         if (collision)

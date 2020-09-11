@@ -17,6 +17,7 @@ public class EquationItem : ScriptableObject
     public int SecondEnergy;
     public List<int> productid;
 
+    public List<int> Energy;
     [TextArea]
     public string itemInfo;
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\u6C27\u6C14"
   itemImage: {fileID: 0}
-  itemHeld: 0
+  itemHeld: 73
   Itemid: 2
   itemInfo: "\u8FD9\u662F\u6C27\u6C14"

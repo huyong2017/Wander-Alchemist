@@ -11,6 +11,8 @@ public class BagManager : MonoBehaviour
     public static BagManager instance;
     public Bag myBag;
     public GameObject GBag;
+    public GameObject bagCamera;
+    public GameObject outBag;
     public GComponent mainUI;
     private GComponent Bag;
     private GList goodsItemList;
@@ -54,6 +56,14 @@ public class BagManager : MonoBehaviour
         energyprogress1 = Bag.GetChild("energyprogress1").asProgress;
         energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
         energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
+        energy1.num = 0;
+        energy2.num = 0;
+        energy3.num = 0;
+        UIManager.instance.setPower(0, energy1.num);
+        UIManager.instance.setPower(2, energy2.num);
+        UIManager.instance.setPower(3, energy3.num);
+        GBag.SetActive(false);
+        bagCamera.SetActive(false);
     }
 
     public void Reaction(EquationItem item,int propid)
@@ -111,11 +121,12 @@ public class BagManager : MonoBehaviour
         switch (propid)
         {
             case 1:
-                energy1.num += num;
+                energy1.num += num;      
                 if (energy1.num>=100)
                 {
                     energy1.num = 100;
                 }
+                UIManager.instance.setPower(0, energy1.num / 100);
                 break;
             case 2:
                 energy2.num += num;
@@ -123,6 +134,7 @@ public class BagManager : MonoBehaviour
                 {
                     energy2.num = 100;
                 }
+                UIManager.instance.setPower(2, energy2.num / 100);
                 break;
             case 3:
                 energy3.num += num;
@@ -130,6 +142,7 @@ public class BagManager : MonoBehaviour
                 {
                     energy3.num = 100;
                 }
+                UIManager.instance.setPower(3, energy3.num / 100);
                 break;
             default:
                 break;
@@ -157,7 +170,7 @@ public class BagManager : MonoBehaviour
             {
                 GButton gButton = goodsItemList.AddItemFromPool().asButton;
                 gButton.GetChild("number").asTextField.text = item.itemHeld.ToString();
-                gButton.GetChild("icon").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "Goods" + item.Itemid);
+                gButton.GetChild("icon").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "goods" + item.Itemid);
                 gButton.GetChild("id").asTextField.text = item.Itemid.ToString();
                 gButton.GetChild("title").asTextField.text = item.itemInfo;
                 gButton.onClick.Add(() => { ClickItem(gButton); });
@@ -167,6 +180,10 @@ public class BagManager : MonoBehaviour
         {
             GButton gButton = goodsItemList.AddItemFromPool().asButton;
             gButton.GetChild("number").asTextField.text = "";
+            gButton.GetChild("icon").asLoader.url = "";
+            gButton.GetChild("id").asTextField.text = "";
+            gButton.GetChild("title").asTextField.text = "";
+            gButton.onClick.Add(() => { ClickItem(gButton); });
         }
         energyprogress1.TweenValue(energy1.num, 0.1f);
         energyprogress2.TweenValue(energy2.num, 0.1f);
@@ -180,8 +197,5 @@ public class BagManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

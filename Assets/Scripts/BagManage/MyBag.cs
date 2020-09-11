@@ -8,8 +8,12 @@ public class MyBag : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public static MyBag instance;
+
     public Bag myBag;
     private GComponent Bag;
+    public GameObject bagCamera;
+    public GameObject outBag;
     private GList goodsItemList;
     private GList equationItemList;
     private GLoader prop;
@@ -36,13 +40,7 @@ public class MyBag : MonoBehaviour
     private int propid;
 
 
-    void Start()
-    {
-        
-
-    }
-
-    private void Awake()
+    private void Start()
     {
         Bag = GetComponent<UIPanel>().ui;
         goodsItemList = Bag.GetChild("GoodsItemList").asList;
@@ -61,9 +59,6 @@ public class MyBag : MonoBehaviour
         energyprogress1 = Bag.GetChild("energyprogress1").asProgress;
         energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
         energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
-        energyprogress1.value = energy1.num;
-        energyprogress2.value = energy2.num;
-        energyprogress3.value = energy3.num;
         BagInitiate();
     }
 
@@ -72,13 +67,17 @@ public class MyBag : MonoBehaviour
         goodsItemList.RemoveChildrenToPool();
         equationItemList.RemoveChildrenToPool();
 
+        energyprogress1.value = energy1.num;
+        energyprogress2.value = energy2.num;
+        energyprogress3.value = energy3.num;
         foreach (var item in myBag.itemList)
         {
+            Debug.Log("13");
             if (item != null)
             {
                 GButton gButton = goodsItemList.AddItemFromPool().asButton;
                 gButton.GetChild("number").asTextField.text = item.itemHeld.ToString();
-                gButton.GetChild("icon").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "Goods" + item.Itemid);
+                gButton.GetChild("icon").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "goods" + item.Itemid);
                 gButton.GetChild("id").asTextField.text = item.Itemid.ToString();
                 gButton.GetChild("title").asTextField.text = item.itemInfo;
                 gButton.onClick.Add(() => { ClickItem(gButton); });
@@ -88,6 +87,10 @@ public class MyBag : MonoBehaviour
         {
             GButton gButton = goodsItemList.AddItemFromPool().asButton;
             gButton.GetChild("number").asTextField.text = "";
+            gButton.GetChild("icon").asLoader.url = "";
+            gButton.GetChild("id").asTextField.text = "";
+            gButton.GetChild("title").asTextField.text = "";
+            gButton.onClick.Add(() => { ClickItem(gButton); });
         }
 
         foreach (var item in myBag.equationList)
@@ -249,6 +252,25 @@ public class MyBag : MonoBehaviour
                 ActProgress.value = 0;
                 ActTime = 0;
                 BagManager.instance.Reaction(reactItem,propid);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (this.gameObject.active)
+            {
+                this.gameObject.SetActive(false);
+                bagCamera.SetActive(false);
+                outBag.SetActive(true);
+            }
+            else
+            {
+                this.gameObject.SetActive(true);
+                bagCamera.SetActive(true);
+                Debug.Log("begin");
+                BagInitiate();
+                outBag.SetActive(false);
+                
             }
         }
     }

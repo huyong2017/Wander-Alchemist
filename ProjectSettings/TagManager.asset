@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - UIThings
+  - exam
   layers:
   - Default
   - TransparentFX

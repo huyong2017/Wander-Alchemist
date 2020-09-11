@@ -5641,7 +5641,7 @@ GameObject:
   - component: {fileID: 411973352}
   m_Layer: 0
   m_Name: UIGrass01 (1)
-  m_TagString: UIThings
+  m_TagString: exam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6195,6 +6195,18 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 056647a6c39293240aa78096d407225b, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 056647a6c39293240aa78096d407225b, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 056647a6c39293240aa78096d407225b, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 19800006, guid: 056647a6c39293240aa78096d407225b, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -6403,7 +6415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 056647a6c39293240aa78096d407225b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 056647a6c39293240aa78096d407225b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10032,6 +10044,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 438550756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &774673145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774673141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6705038830c4211459b1bcf1faffbaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &780250005
 GameObject:
   m_ObjectHideFlags: 0
@@ -28298,7 +28322,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 46.167004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6622742008068299454, guid: de7334c6bdf3e5f498b1b8637b3c2456, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: de7334c6bdf3e5f498b1b8637b3c2456, type: 3}
 --- !u!224 &6811756732800416992 stripped
 RectTransform:

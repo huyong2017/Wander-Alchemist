@@ -143,6 +143,13 @@ public class UIManager : MonoBehaviour
             imgFillAmount_oxygen.fillAmount += t;
         }
     }
+    public void CollisionDetection(bool collision)
+    {
+        if (collision)
+        {
+            imgFillAmount_fire.fillAmount += 0.1f;
+        }
+    }
 }
 
         

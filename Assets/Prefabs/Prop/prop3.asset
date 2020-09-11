@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4598e9a68427fb04599f8e6a16fa8532, type: 3}
   m_Name: prop3
   m_EditorClassIdentifier: 
-  propName: 
+  propName: "\u6C27\u6C14\u5236\u9020\u673A"
   propImage: {fileID: 0}
-  propid: 0
-  equation: {fileID: 0}
-  Energyid: 0
+  propid: 3
+  equation: {fileID: 11400000, guid: f655040ff0c3a60478e94992ec702e9f, type: 2}
+  Energyid: 3
   itemInfo: 

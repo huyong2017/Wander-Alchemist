@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86441e97f011f724b9d1cd7e8e7fd008, type: 3}
+  m_Name: equation2
+  m_EditorClassIdentifier: 
+  EquationName: "\u78B3\u9178\u6C22\u94A0\u5206\u89E3"
+  EquationImage: {fileID: 0}
+  Equationid: 2
+  goods:
+  - {fileID: 11400000, guid: 18820a8c70ad73541b5295cae147653e, type: 2}
+  product:
+  - {fileID: 11400000, guid: 19e47299e375e4647acc7b627104b358, type: 2}
+  - {fileID: 11400000, guid: e8295256b53c76f4eafb3247883ba739, type: 2}
+  - {fileID: 11400000, guid: cbacdbb503fc57e45a6a47419ac58b81, type: 2}
+  goodsnum: 02000000
+  productnum: 010000000100000001000000
+  FirstEnergy: 3
+  SecondEnergy: 3
+  FirstEnergyItem: {fileID: 11400000, guid: f9c6640a047a9ef44954f60850910dd8, type: 2}
+  SecondEnergyItem: {fileID: 11400000, guid: f9c6640a047a9ef44954f60850910dd8, type: 2}
+  Energy: 0300000003000000
+  productid: 030000000400000006000000
+  itemInfo: 

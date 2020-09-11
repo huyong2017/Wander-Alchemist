@@ -15,6 +15,12 @@ public class BagManager : MonoBehaviour
     private GComponent Bag;
     private GList goodsItemList;
     private GTextField GoodsInfo;
+    private GProgressBar energyprogress1;
+    private GProgressBar energyprogress2;
+    private GProgressBar energyprogress3;
+    public EnergyItem energy1;
+    public EnergyItem energy2;
+    public EnergyItem energy3;
 
 
 
@@ -45,9 +51,12 @@ public class BagManager : MonoBehaviour
         Bag = GBag.GetComponent<UIPanel>().ui;
         goodsItemList = Bag.GetChild("GoodsItemList").asList;
         GoodsInfo = Bag.GetChild("Information").asTextField;
+        energyprogress1 = Bag.GetChild("energyprogress1").asProgress;
+        energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
+        energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
     }
 
-    public void Reaction(EquationItem item)
+    public void Reaction(EquationItem item,int propid)
     {
         List<int> Energy = item.Energy;
         List<GoodsItem> goods = item.goods;
@@ -76,11 +85,56 @@ public class BagManager : MonoBehaviour
                     products[i].itemHeld = productnum[i];
                 }
             }
-        }
+
+            for (int i = 0; i < Energy.Count; i++)
+            {
+                if (Energy[i] == propid)
+                {
+                    if (i == 0)
+                    {
+                        addEnergy(propid, 10);
+
+                    }
+                    if (i == 1)
+                    {
+                        addEnergy(propid, 5);
+                    }
+                }
+            }
+        }  
         UpdateBag();
         //Debug.Log(Energy[0] + Energy[1]);
     }
 
+    private void addEnergy(int propid,int num)
+    {
+        switch (propid)
+        {
+            case 1:
+                energy1.num += num;
+                if (energy1.num>=100)
+                {
+                    energy1.num = 100;
+                }
+                break;
+            case 2:
+                energy2.num += num;
+                if (energy2.num >= 100)
+                {
+                    energy2.num = 100;
+                }
+                break;
+            case 3:
+                energy3.num += num;
+                if (energy3.num >= 100)
+                {
+                    energy3.num = 100;
+                }
+                break;
+            default:
+                break;
+        }
+    }
     public bool checkGoods(List<GoodsItem> goods, List<int> goodsnum)
     {
         for (int i = 0; i < goods.Count; i++)
@@ -114,6 +168,9 @@ public class BagManager : MonoBehaviour
             GButton gButton = goodsItemList.AddItemFromPool().asButton;
             gButton.GetChild("number").asTextField.text = "";
         }
+        energyprogress1.TweenValue(energy1.num, 0.1f);
+        energyprogress2.TweenValue(energy2.num, 0.1f);
+        energyprogress3.TweenValue(energy3.num, 0.1f);
     }
 
     private void ClickItem(GButton button)

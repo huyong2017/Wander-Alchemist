@@ -17,13 +17,23 @@ public class MyBag : MonoBehaviour
     private GComponent chooseEquation;
     private GTextField GoodsInfo;
     private GProgressBar ActProgress;
+    private GProgressBar energyprogress1;
+    private GProgressBar energyprogress2;
+    private GProgressBar energyprogress3;
     private float ActTime;
     private bool isAct;
     private EquationItem reactItem;
 
+
     private GButton button1;
     private GButton button2;
     private GButton button3;
+
+    public EnergyItem energy1;
+    public EnergyItem energy2;
+    public EnergyItem energy3;
+
+    private int propid;
 
 
     void Start()
@@ -47,6 +57,13 @@ public class MyBag : MonoBehaviour
         button1 = Bag.GetChild("button1").asButton;
         button2 = Bag.GetChild("button2").asButton;
         button3 = Bag.GetChild("button3").asButton;
+
+        energyprogress1 = Bag.GetChild("energyprogress1").asProgress;
+        energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
+        energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
+        energyprogress1.value = energy1.num;
+        energyprogress2.value = energy2.num;
+        energyprogress3.value = energy3.num;
         BagInitiate();
     }
 
@@ -79,7 +96,7 @@ public class MyBag : MonoBehaviour
             {
                 GComponent gComponent = equationItemList.AddItemFromPool().asCom;
                 gComponent.GetChild("id").asTextField.text = item.Equationid.ToString();
-                gComponent.GetChild("Equation").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "reaction1");
+                gComponent.GetChild("Equation").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "reaction"+item.Equationid);
                 gComponent.GetChild("FirstEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + item.FirstEnergy);
                 gComponent.GetChild("SecondEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + item.SecondEnergy);
                 gComponent.GetChild("information").asTextField.text = item.itemInfo;
@@ -99,12 +116,12 @@ public class MyBag : MonoBehaviour
             prop.url = UIPackage.GetItemURL("NewBagPackage", "prop1");
             mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy1");
         }
-        else if (button1.selected)
+        else if (button2.selected)
         {
             prop.url = UIPackage.GetItemURL("NewBagPackage", "prop2");
             mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy2");
         }
-        else if (button1.selected)
+        else if (button3.selected)
         {
             prop.url = UIPackage.GetItemURL("NewBagPackage", "prop3");
             mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy3");
@@ -113,7 +130,21 @@ public class MyBag : MonoBehaviour
         {
             prop.url = UIPackage.GetItemURL("NewBagPackage", "prop1");
             mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy1");
+            propid = 1;
             button1.selected = true;
+        }
+
+        if (myBag.propsItems[0].equation!=null)
+        {
+            EquationItem equation = myBag.propsItems[0].equation;
+            chooseEquation.GetChild("equation").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "reaction" + equation.Equationid);
+            chooseEquation.GetChild("FirstEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + equation.FirstEnergy);
+            chooseEquation.GetChild("SecondEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + equation.SecondEnergy);
+            chooseEquation.GetChild("id").asTextField.text = equation.Equationid.ToString();
+            chooseEquation.GetChild("sign").asTextField.text = "";
+            string id = equation.Equationid.ToString();
+            chooseEquation.GetChild("actBtn").asButton.onTouchBegin.Add(() => { EquationActBegin(id); });
+            chooseEquation.GetChild("actBtn").asButton.onTouchEnd.Add(() => { EquationActEnd(id); });
         }
 
         button1.onClick.Add(() => { changeProp(1); });
@@ -128,18 +159,21 @@ public class MyBag : MonoBehaviour
             case 1:
                 prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
                 mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                propid = 1;
                 button2.selected = false;
                 button3.selected = false;
                 break;
             case 2:
                 prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
                 mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                propid = 2;
                 button1.selected = false;
                 button3.selected = false;
                 break;
             case 3:
                 prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
                 mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                propid = 3;
                 button1.selected = false;
                 button2.selected = false;
                 break;
@@ -171,6 +205,10 @@ public class MyBag : MonoBehaviour
         string id = chooseEquation.GetChild("id").asTextField.text;
         chooseEquation.GetChild("actBtn").asButton.onTouchBegin.Add(() => { EquationActBegin(id); });
         chooseEquation.GetChild("actBtn").asButton.onTouchEnd.Add(() => { EquationActEnd(id); });
+        foreach (var item in myBag.propsItems)
+        {
+            item.equation = myBag.equationList[int.Parse(id)-1];
+        }
     }
 
     private void EquationActBegin(string id)
@@ -210,7 +248,7 @@ public class MyBag : MonoBehaviour
             {
                 ActProgress.value = 0;
                 ActTime = 0;
-                BagManager.instance.Reaction(reactItem);
+                BagManager.instance.Reaction(reactItem,propid);
             }
         }
     }

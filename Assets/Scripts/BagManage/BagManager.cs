@@ -42,7 +42,7 @@ public class BagManager : MonoBehaviour
 
     void Start()
     {
-        Bag = GetComponent<UIPanel>().ui;
+        Bag = GBag.GetComponent<UIPanel>().ui;
         goodsItemList = Bag.GetChild("GoodsItemList").asList;
         GoodsInfo = Bag.GetChild("Information").asTextField;
     }
@@ -76,8 +76,9 @@ public class BagManager : MonoBehaviour
                     products[i].itemHeld = productnum[i];
                 }
             }
-        } 
-        Debug.Log(Energy[0] + Energy[1]);
+        }
+        UpdateBag();
+        //Debug.Log(Energy[0] + Energy[1]);
     }
 
     public bool checkGoods(List<GoodsItem> goods, List<int> goodsnum)
@@ -107,6 +108,11 @@ public class BagManager : MonoBehaviour
                 gButton.GetChild("title").asTextField.text = item.itemInfo;
                 gButton.onClick.Add(() => { ClickItem(gButton); });
             }
+        }
+        for (int i = 0; i < 30 - myBag.itemList.Count; i++)
+        {
+            GButton gButton = goodsItemList.AddItemFromPool().asButton;
+            gButton.GetChild("number").asTextField.text = "";
         }
     }
 

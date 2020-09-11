@@ -21,6 +21,11 @@ public class MyBag : MonoBehaviour
     private bool isAct;
     private EquationItem reactItem;
 
+    private GButton button1;
+    private GButton button2;
+    private GButton button3;
+
+
     void Start()
     {
         
@@ -38,6 +43,10 @@ public class MyBag : MonoBehaviour
         ActProgress = Bag.GetChild("ActProgress").asProgress;
         ActProgress.value = 0;
         equationItemList = Bag.GetChild("equationItemList").asList;
+
+        button1 = Bag.GetChild("button1").asButton;
+        button2 = Bag.GetChild("button2").asButton;
+        button3 = Bag.GetChild("button3").asButton;
         BagInitiate();
     }
 
@@ -84,6 +93,61 @@ public class MyBag : MonoBehaviour
 
             }
         }
+
+        if (button1.selected)
+        {
+            prop.url = UIPackage.GetItemURL("NewBagPackage", "prop1");
+            mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy1");
+        }
+        else if (button1.selected)
+        {
+            prop.url = UIPackage.GetItemURL("NewBagPackage", "prop2");
+            mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy2");
+        }
+        else if (button1.selected)
+        {
+            prop.url = UIPackage.GetItemURL("NewBagPackage", "prop3");
+            mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy3");
+        }
+        else
+        {
+            prop.url = UIPackage.GetItemURL("NewBagPackage", "prop1");
+            mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy1");
+            button1.selected = true;
+        }
+
+        button1.onClick.Add(() => { changeProp(1); });
+        button2.onClick.Add(() => { changeProp(2); });
+        button3.onClick.Add(() => { changeProp(3); });
+    }
+
+    private void changeProp(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
+                mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                button2.selected = false;
+                button3.selected = false;
+                break;
+            case 2:
+                prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
+                mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                button1.selected = false;
+                button3.selected = false;
+                break;
+            case 3:
+                prop.url = UIPackage.GetItemURL("NewBagPackage", "prop" + id);
+                mainEnergy.url = UIPackage.GetItemURL("NewBagPackage", "energy" + id);
+                button1.selected = false;
+                button2.selected = false;
+                break;
+            default:
+                break;
+        }
+        
+        
     }
     private void ClickItem(GButton button)
     {

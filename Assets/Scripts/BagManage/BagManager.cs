@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using FairyGUI;
 using UnityEngine;
@@ -41,6 +42,27 @@ public class BagManager : MonoBehaviour
         
     }
 
+    public void Reaction(EquationItem item)
+    {
+        List<int> Energy = item.Energy;
+        List<GoodsItem> goods = item.goods;
+        List<GoodsItem> products = item.product;
+        List<int> goodsnum = item.goodsnum;
+        List<int> productnum = item.productnum;
+        Debug.Log(Energy[0] + Energy[1]);
+    }
+
+    public Boolean checkGoods(List<GoodsItem> goods, List<int> goodsnum)
+    {
+        for (int i = 0; i < goods.Count; i++)
+        {
+            if (goods[i].itemHeld<goodsnum[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     // Update is called once per frame
     void Update()
     {

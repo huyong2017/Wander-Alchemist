@@ -3047,5 +3047,6 @@ namespace FairyGUI
             if (i != -1)
                 _selectionController = parent.GetControllerAt(i);
         }
+
     }
 }

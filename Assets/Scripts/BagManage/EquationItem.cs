@@ -13,9 +13,9 @@ public class EquationItem : ScriptableObject
     public List<GoodsItem> product;
     public List<int> goodsnum;
     public List<int> productnum;
-    public Sprite FirstEnergy;
-    public Sprite SecondEnergy;
-    public Sprite ThirdEnergy;
+    public int FirstEnergy;
+    public int SecondEnergy;
+    public List<int> productid;
 
     [TextArea]
     public string itemInfo;

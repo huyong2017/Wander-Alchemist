@@ -17,23 +17,8 @@ public class MyBag : MonoBehaviour
     private GComponent chooseEquation;
     private GTextField GoodsInfo;
     private GProgressBar ActProgress;
-    private float ActTime;
-    private Boolean isAct;
-    private EquationItem reactItem;
 
     void Start()
-    {
-        
-
-        //for (int i = 0; i < goodsItemList.numItems - 10; i++)
-        //{
-        //    GButton button = goodsItemList.GetChildAt(i).asButton;
-
-        //    button.onClick.Add(()=> { ClickItem(button); });
-        //}
-    }
-
-    private void Awake()
     {
         Bag = GetComponent<UIPanel>().ui;
         goodsItemList = Bag.GetChild("GoodsItemList").asList;
@@ -42,8 +27,19 @@ public class MyBag : MonoBehaviour
         mainEnergy = Bag.GetChild("mainEnergy").asLoader;
         chooseEquation = Bag.GetChild("chooseEquation").asCom;
         ActProgress = Bag.GetChild("ActProgress").asProgress;
-        ActProgress.value = 0;
         equationItemList = Bag.GetChild("equationItemList").asList;
+
+
+        //for (int i = 0; i < goodsItemList.numItems - 10; i++)
+        //{
+        //    GButton button = goodsItemList.GetChildAt(i).asButton;
+            
+        //    button.onClick.Add(()=> { ClickItem(button); });
+        //}
+    }
+
+    private void Awake()
+    {
         BagInitiate();
     }
     //private void RenderListItem(int index,GObject obj)
@@ -90,17 +86,16 @@ public class MyBag : MonoBehaviour
             {
                 GComponent gComponent = equationItemList.AddItemFromPool().asCom;
                 gComponent.GetChild("id").asTextField.text = item.Equationid.ToString();
-                gComponent.GetChild("Equation").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "reaction1");
+                gComponent.GetChild("equation").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "equation" + item.Equationid);
                 gComponent.GetChild("FirstEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + item.FirstEnergy);
                 gComponent.GetChild("SecondEnergy").asLoader.url = UIPackage.GetItemURL("NewBagPackage", "energy" + item.SecondEnergy);
                 gComponent.GetChild("information").asTextField.text = item.itemInfo;
                 string productid = "";
                 foreach (var itemid in item.productid)
                 {
-                    productid += productid + itemid + " ";
+                    productid += productid + " ";
                 }
                 gComponent.GetChild("productid").asTextField.text = productid;
-                gComponent.GetChild("UseBtn").asButton.onClick.Add(() => { UseEquation(gComponent); });
 
             }
         }
@@ -119,72 +114,24 @@ public class MyBag : MonoBehaviour
 
     private void UseEquation(GComponent gComponent)
     {
-        chooseEquation.GetChild("equation").asLoader.url = gComponent.GetChild("Equation").asLoader.url;
+        chooseEquation.GetChild("equation").asLoader.url = gComponent.GetChild("equation").asLoader.url;
         chooseEquation.GetChild("FirstEnergy").asLoader.url = gComponent.GetChild("FirstEnergy").asLoader.url;
         chooseEquation.GetChild("SecondEnergy").asLoader.url = gComponent.GetChild("SecondEnergy").asLoader.url;
         chooseEquation.GetChild("id").asTextField.text = gComponent.GetChild("id").asTextField.text;
-        chooseEquation.GetChild("sign").asTextField.text = "";
         string id = chooseEquation.GetChild("id").asTextField.text;
-        chooseEquation.GetChild("actBtn").asButton.onTouchBegin.Add(() => { EquationActBegin(id); });
-        chooseEquation.GetChild("actBtn").asButton.onTouchEnd.Add(() => { EquationActEnd(id); });
+        chooseEquation.GetChild("actBtn").asButton.onClick.Add(() => { EquationAct(id); });
     }
 
-    private void EquationActBegin(string id)
+    private void EquationAct(string id)
     {
-        ActTime = 0;
-        foreach (var item in myBag.equationList)
-        {
-            if (item.Equationid ==int.Parse(id))
-            {
-                reactItem = item;
-                break;
-            }
-        }
-        isAct = true;
         Debug.Log("11");
         //float actTime = 0;
         //actTime
         //gComponent.
     }
-
-    private void EquationActEnd(string id)
-    {
-        ActProgress.TweenValue(0, 0.5f);
-        isAct = false;
-        Debug.Log("11");
-        //float actTime = 0;
-        //actTime
-        //gComponent.
-    }
-
-    IEnumerator Act()
-    {
-        for (int i = 1; i <= 100; i++)
-        {
-            ActProgress.value = i;
-            if (ActProgress.value == 100)
-            {
-                BagManager.instance.Reaction(1);
-                ActProgress.value = 0;
-            }
-            yield return new WaitForSeconds(500);
-        }    
-    }
-  
     // Update is called once per frame
     void Update()
     {
-        if (isAct)
-        {
-            ActTime = ActTime + Time.deltaTime;
-            ActProgress.TweenValue(ActTime / 0.5*100, 0.05f);
-            if (ActProgress.value>=100)
-            {
-                ActProgress.value = 0;
-                ActTime = 0;
-                BagManager.instance.Reaction(reactItem);
-            }
-        }
+        
     }
 }
-

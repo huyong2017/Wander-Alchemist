@@ -44,4 +44,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   equationList:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f655040ff0c3a60478e94992ec702e9f, type: 2}

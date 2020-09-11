@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class FireTest : MonoBehaviour
 {
+    public GameObject CampFire;
+    private float time;
     private void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "exam")
+        if (other.tag == "campFire")
         {
-            UIManager.instance.CollisionDetection(true);
+            time += Time.deltaTime;
+            if (time > 3.0f)
+            {
+                CampFire.SetActive(false);
+            }
         }
     }
 }

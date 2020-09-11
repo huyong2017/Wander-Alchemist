@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
             if (imgFillAmount_light.fillAmount > 0f)
             {
                 time += Time.deltaTime;
-                imgFillAmount_light.fillAmount -= time / 10;
+                imgFillAmount_light.fillAmount -= time / 20;
             }
             if(imgFillAmount_light.fillAmount <= 0f)
             {
@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
     {
         if (collision)
         {
-            imgFillAmount_fire.fillAmount += 0.1f;
+            imgFillAmount_oxygen.fillAmount -= 0.001f;
         }
     }
 }

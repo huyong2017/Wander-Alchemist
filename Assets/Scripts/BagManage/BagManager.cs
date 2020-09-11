@@ -21,7 +21,6 @@ public class BagManager : MonoBehaviour
             Destroy(this);
         }
         instance = this;
-
     }
 
     public static bool isFull()
@@ -35,6 +34,7 @@ public class BagManager : MonoBehaviour
         }
         return true;
     }
+
 
     void Start()
     {

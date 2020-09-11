@@ -19,10 +19,10 @@ public class GoodsOnWorld : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            AddNewItem();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    AddNewItem();
+        //}
     }
 
 

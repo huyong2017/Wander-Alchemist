@@ -6,4 +6,5 @@ using UnityEngine;
 public class Bag : ScriptableObject
 {
     public List<GoodsItem> itemList = new List<GoodsItem>();
+    public List<EquationItem> equationList = new List<EquationItem>();
 }

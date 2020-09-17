@@ -62,8 +62,7 @@ public class BagManager : MonoBehaviour
         UIManager.instance.setPower(0, energy1.num);
         UIManager.instance.setPower(2, energy2.num);
         UIManager.instance.setPower(3, energy3.num);
-        GBag.SetActive(false);
-        bagCamera.SetActive(false);
+        
     }
 
     public void Reaction(EquationItem item,int propid)
@@ -197,5 +196,27 @@ public class BagManager : MonoBehaviour
     }
 
     // Update is called once per frame
- 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (GBag.active)
+            {
+                GBag.SetActive(false);
+                bagCamera.SetActive(false);
+                outBag.SetActive(true);
+                UIManager.instance.setPower(0, energy1.num);
+                UIManager.instance.setPower(2, energy2.num);
+                UIManager.instance.setPower(3, energy3.num);
+            }
+            else
+            {
+                GBag.SetActive(true);
+                bagCamera.SetActive(true);               
+                outBag.SetActive(false);
+
+            }
+        }
+    }
 }

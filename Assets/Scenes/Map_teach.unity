@@ -6678,6 +6678,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBag: {fileID: 11400000, guid: 361f94d972f893f40bf6b89032c4692c, type: 2}
+  bagCamera: {fileID: 40596448}
+  GBag: {fileID: 446323869}
+  outBag: {fileID: 187762512}
   energy1: {fileID: 11400000, guid: 3563a41632982ec4c953f8c8880e91f0, type: 2}
   energy2: {fileID: 11400000, guid: 4ed95cdbd418a024180b4f462467e213, type: 2}
   energy3: {fileID: 11400000, guid: f9c6640a047a9ef44954f60850910dd8, type: 2}
@@ -11071,7 +11074,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

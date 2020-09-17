@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - {fileID: 11400000, guid: 8a1e08fab3662f346a2c17c385d71e08, type: 2}
-  - {fileID: 11400000, guid: e87e47c8bf9f1fd4eb574ddab192d163, type: 2}
   - {fileID: 11400000, guid: 19e47299e375e4647acc7b627104b358, type: 2}
+  - {fileID: 11400000, guid: e8295256b53c76f4eafb3247883ba739, type: 2}
+  - {fileID: 11400000, guid: cbacdbb503fc57e45a6a47419ac58b81, type: 2}
+  - {fileID: 11400000, guid: 18820a8c70ad73541b5295cae147653e, type: 2}
+  - {fileID: 11400000, guid: e87e47c8bf9f1fd4eb574ddab192d163, type: 2}
   equationList:
   - {fileID: 11400000, guid: f655040ff0c3a60478e94992ec702e9f, type: 2}
   - {fileID: 11400000, guid: 7bb2d3b2e2018684c8c581b936ef8e59, type: 2}

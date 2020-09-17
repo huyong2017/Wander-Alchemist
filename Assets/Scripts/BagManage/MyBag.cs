@@ -8,11 +8,10 @@ public class MyBag : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static MyBag instance;
-
     public Bag myBag;
     private GComponent Bag;
     public GameObject bagCamera;
+    public GameObject GBag;
     public GameObject outBag;
     private GList goodsItemList;
     private GList equationItemList;
@@ -60,8 +59,31 @@ public class MyBag : MonoBehaviour
         energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
         energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
         BagInitiate();
+        GBag.SetActive(false);
+        bagCamera.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        Bag = GBag.GetComponent<UIPanel>().ui;
+        goodsItemList = Bag.GetChild("GoodsItemList").asList;
+        GoodsInfo = Bag.GetChild("Information").asTextField;
+        prop = Bag.GetChild("prop").asLoader;
+        mainEnergy = Bag.GetChild("mainEnergy").asLoader;
+        chooseEquation = Bag.GetChild("chooseEquation").asCom;
+        ActProgress = Bag.GetChild("ActProgress").asProgress;
+        ActProgress.value = 0;
+        equationItemList = Bag.GetChild("equationItemList").asList;
+
+        button1 = Bag.GetChild("button1").asButton;
+        button2 = Bag.GetChild("button2").asButton;
+        button3 = Bag.GetChild("button3").asButton;
+
+        energyprogress1 = Bag.GetChild("energyprogress1").asProgress;
+        energyprogress2 = Bag.GetChild("energyprogress2").asProgress;
+        energyprogress3 = Bag.GetChild("energyprogress3").asProgress;
+        BagInitiate();
+    }
     private void BagInitiate()
     {
         goodsItemList.RemoveChildrenToPool();
@@ -72,7 +94,6 @@ public class MyBag : MonoBehaviour
         energyprogress3.value = energy3.num;
         foreach (var item in myBag.itemList)
         {
-            Debug.Log("13");
             if (item != null)
             {
                 GButton gButton = goodsItemList.AddItemFromPool().asButton;
@@ -252,25 +273,6 @@ public class MyBag : MonoBehaviour
                 ActProgress.value = 0;
                 ActTime = 0;
                 BagManager.instance.Reaction(reactItem,propid);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (this.gameObject.active)
-            {
-                this.gameObject.SetActive(false);
-                bagCamera.SetActive(false);
-                outBag.SetActive(true);
-            }
-            else
-            {
-                this.gameObject.SetActive(true);
-                bagCamera.SetActive(true);
-                Debug.Log("begin");
-                BagInitiate();
-                outBag.SetActive(false);
-                
             }
         }
     }
